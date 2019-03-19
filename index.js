@@ -2,11 +2,16 @@
 const express = require('express');
 const routes = require("./Routes/api");
 const bodyParser = require('body-parser');
+const mongoose = require("mongoose")
 
 
 
 //set up express
 const app = express();
+
+//connect to mongodb
+mongoose.connect("mongodb://localhost/employeelist")
+mongoose.Promise = global.Promise;
 
 //parse different types of body-this specifically data
 app.use(bodyParser.json());

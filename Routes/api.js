@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Employee = require("../Models/employees")
 
 //Retrieve list of employees
 router.get("/employees", function(req, res, next) {
@@ -8,8 +9,11 @@ router.get("/employees", function(req, res, next) {
 
 //add a new employee to the database
 router.post("/employees", function(req, res, next) {
-    console.log(req.body)
-    res.send({ type: "POST" });
+    //taking the request save to the database
+    Employee.create(req.body).then(function(employee){
+       res.send(employee);
+    });
+  
 });
 
 //update employee to the database
