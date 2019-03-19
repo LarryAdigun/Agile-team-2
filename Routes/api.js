@@ -8,6 +8,7 @@ router.get("/employees", function(req, res, next) {
 
 //add a new employee to the database
 router.post("/employees", function(req, res, next) {
+    console.log(req.body)
     res.send({ type: "POST" });
 });
 
