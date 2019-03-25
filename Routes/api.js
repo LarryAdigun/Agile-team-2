@@ -18,11 +18,13 @@ router.post("/employees", function(req, res, next) {
 
 //update employee to the database
 router.put("/employees/:id", function(req, res, next) {
+    Employee.findByIdAndRemove({_id:req.params.id});
     res.send({ type: "PUT"});
 });
 
 //delete employee form database
 router.delete("/employees/:id", function(req, res, next) {
+    Employee.findByIdAndRemove({_id:req.params.id});
     res.send({ type: "DELETE" });
 });
 
