@@ -9,7 +9,7 @@ const mongoose = require("mongoose")
 //set up express
 const app = express();
 
-//connect to mongodb
+//connect to mongodb-Mongoose going to create for us
 mongoose.connect("mongodb://localhost/employeelist")
 mongoose.Promise = global.Promise;
 
@@ -18,6 +18,10 @@ app.use(bodyParser.json());
 
 //initialize routes
 app.use(routes);
+
+app.use(function(err,req,res,next){
+    res.status(422).send({error:err.message});
+});
 
 //listen to port number
 app.listen(process.env.port || 8080, function() {
